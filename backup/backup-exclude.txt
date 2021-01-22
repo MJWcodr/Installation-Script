@@ -1,0 +1,1 @@
+/home/$(logname)/Onedrive /home/$(logname)/Downloads

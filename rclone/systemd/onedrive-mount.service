@@ -1,0 +1,8 @@
+Description=A script that mounts onedrive.
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/onedrive-mount.sh
+
+[Install]
+WantedBy=multi-user.target
