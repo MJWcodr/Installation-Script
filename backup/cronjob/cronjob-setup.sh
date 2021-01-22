@@ -1,6 +1,5 @@
 #!/bin/bash
-cd "./backup/cronjob" || echo " \e[31mchanging directory into ./backup/cronjob failed" && exit
-
+cd "./backup/cronjob" || echo " \e[31mchanging directory into ./backup/cronjob failed"
 # copy the backup-hourly.sh script into the proper directory
 if [ -f "/usr/sbin/lbackup-hourly.sh" ]; then
 	echo "/usr/sbin/lbackup-hourly.sh already exists"

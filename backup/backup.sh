@@ -40,7 +40,8 @@ cd ./backup || exit
 	fi
 	printf "starting backup"
 	cp -f "./backup.txt" "/srv/backup.txt"
-	cp -f "./backup-exclude.txt" "/srv/backup-exclude.txt"
+	./backup > /srv/backup.txt
+	./backup-exclude > /srv/backup-exclude.txt
 	
 	restic -r "/srv/lbackups" --exclude-file "/srv/backup-exclude.txt" --password-file "/srv/backuppw.txt" backup --verbose $(cat backup.txt) 
 	

@@ -1,5 +1,5 @@
 #!/bin/bash
-restic -r "/srv/lbackups" --exclude-file "/srv/backup-exclude.txt" --password-file "/srv/backuppw.txt" backup --verbose $(cat backup.txt) 
+restic -r "/srv/lbackups" --exclude-file "/srv/backup-exclude.txt" --password-file "/srv/backuppw.txt" backup --verbose $(cat /srv/backup.txt) 
 
 case $(rclone lsf onedrive:Personal/Backup) in 
 	*$(hostname)*)
@@ -9,4 +9,3 @@ case $(rclone lsf onedrive:Personal/Backup) in
 		rclone mkdir onedrive:Personal/Backups/$(hostname)/
 		rclone sync /srv/lbackups onedrive:Personal/Backups/$(hostname)/
 esac
---bwlimit=BANDWIDTH_SPEC
