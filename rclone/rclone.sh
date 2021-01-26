@@ -1,8 +1,10 @@
 #!/bin/bash
 # copies provided rclone.conf into directory
-apt install rclone
-mkdir /home/$(logname)/Onedrive
 cd ./rclone
+apt install rclone
+if [ -d /home/$(logname)/Onedrive ]; then 
+	mkdir /home/$(logname)/Onedrive
+fi
 echo "$(pwd)"
 echo "Do you know the password of rclone.conf.gpg? (y/n)"
 read -r yesno
@@ -64,7 +66,7 @@ fi
 echo "Do you want to install the systemd service for onedrive? '(y/n)'"
 read -r yesno
 if [ "$yesno" = "y" ]; then
-	./rclone/systemd/onedrive-setup.sh
+	./systemd/onedrive-setup.sh
 fi
 cd ../
 echo "the rclone-setup script ended"

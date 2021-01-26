@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "installation start"
 printf "\n Do you want to run install.sh to install some applications? (y/n)"
 read -r yesno

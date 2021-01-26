@@ -2,6 +2,7 @@
 # Sets up the rclone automount service
 
 # Copy script into systemd
+cd ./systemd
 
 FILE1=/usr/bin/onedrive-mount.sh
 if test -f "$FILE1" ; then

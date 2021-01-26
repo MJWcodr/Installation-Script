@@ -1,1 +1,1 @@
-rclone mount --allow-other onedrive: /home/matthias/Onedrive
+rclone mount --allow-other --vfs-cache-mode onedrive: /home/matthias/Onedrive
