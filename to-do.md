@@ -17,7 +17,8 @@
 	- LibreOffice Vorlage in entsprechenden Ordner
 - [x] upload to git
 - [ ] auto install important Fonts
-
+## Alpha Stability Audit
+- [ ] test on debian-based maschine
 # Beta
 - [ ] Split into Gui and non-gui versions
 - [ ] add option to create rclone using rclone.sh
