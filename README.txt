@@ -1,5 +1,5 @@
 to run the installation process run
-./installation
+./install.sh
 
 # install
 # rclone setup
