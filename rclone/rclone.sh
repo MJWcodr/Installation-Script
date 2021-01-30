@@ -42,10 +42,6 @@ else
 	esac
 fi
 
-if [ "$( cat rclone.conf)" = "" ]; then
-	echo "provided rclone.conf is empty"
-fi 
-
 echo "/home/$(logname)/.config/rclone/ already exists."
 FILE1="/home/$(logname)/.config/rclone/rclone.conf"
 if [ -f "$FILE1" ]; then
