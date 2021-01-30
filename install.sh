@@ -4,7 +4,7 @@ if [ $(whoami) != root ]; then
 	exit
 fi
 
-apt update
+apt -qq update
 
 echo "installation start"
 printf "\n Do you want to run installprogs.sh to install some applications? (y/n)"
@@ -30,6 +30,4 @@ read -r yesno
 if [ "$yesno" = "y" ]; then
 	./security/security.sh
 fi
-
-
 echo "finished"
