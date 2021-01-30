@@ -7,7 +7,7 @@
 	- setup backup service ✔
 	- Choose what to backup ✔
 	- load Backup from Cloud (what needs to be downloaded initially?)
-- [ ] add security script
+- [x] add security script
 	- let user choose which security services to activate
 - [ ] setup programs and userprofiles
 	- LibreOffice Vorlage in entsprechenden Ordner
