@@ -1,1 +1,0 @@
-1. lbackups-hourly runs as root when chrontabed leading to backup-exclude.txt to not be properly working

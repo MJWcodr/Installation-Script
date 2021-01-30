@@ -2,9 +2,22 @@
 # copies provided rclone.conf into directory
 cd ./rclone
 apt install rclone
-if [ -d /home/$(logname)/Onedrive ]; then 
-	mkdir /home/$(logname)/Onedrive
+
+# create required Directories
+## create /home/User_name/.config/rclone
+
+if  [ -d /home/$(logname)/.config ]; then
+	if [ -d /home/$(logname)/.config/rclone ]; then
+		echo "the required directories already exist"
+	else
+		mkdir /home/$(logname)/.config/rclone
+	fi
+else
+	mkdir /home/$(logname)/.config
+	mkdir /home/$(logname)/.config/rclone
 fi
+
+#
 echo "$(pwd)"
 echo "Do you know the password of rclone.conf.gpg? (y/n)"
 read -r yesno
@@ -33,14 +46,12 @@ if [ "$( cat rclone.conf)" = "" ]; then
 	echo "provided rclone.conf is empty"
 fi 
 
-Directory=/home/$(logname)/.config/rclone/
-if [ -d "$Directory" ]; then
-    echo "/home/$(logname)/.config/rclone/ already exists."
-    FILE1="/home/$(logname)/.config/rclone/rclone.conf"
-    if [ -f "$FILE1" ]; then
-    	 echo "/home/$(logname)/.config/rclone/rclone.conf already exists"
-    	 echo "Do you want to update it? This action may lead to data loss if you already have rclone entries (y/n)"
-    	read -r yesno
+echo "/home/$(logname)/.config/rclone/ already exists."
+FILE1="/home/$(logname)/.config/rclone/rclone.conf"
+if [ -f "$FILE1" ]; then
+	echo "/home/$(logname)/.config/rclone/rclone.conf already exists"
+	echo "Do you want to update it? This action may lead to data loss if you already have rclone entries (y/n)"
+	read -r yesno
     	if [ "$yesno" = "y" ]; then
     		gpg --decrypt --batch --passphrase "$key" "rclone.conf.gpg" > rclone.conf
     		if [ "$(cat rclone.conf)" = "" ]; then
@@ -49,18 +60,13 @@ if [ -d "$Directory" ]; then
 		fi 
     		mv -f "./rclone.conf" "/home/$(logname)/.config/rclone/rclone.conf"
     	fi
-    else
-	echo "error"
-	mkdir /home/$(logname)/.config/rclone/
+else
+	echo "rclone.conf does not exitst, yet"
 	gpg --decrypt --batch --passphrase "$key" "./rclone.conf.gpg" > rclone.conf 
     	mv -f "./rclone.conf" "/home/$(logname)/.config/rclone/rclone.conf"
-    fi
-else 
-    echo "/home/$(logname)/.config/rclone/rclone.conf does not exist, yet"
-    mkdir "/home/$(logname)/.config/rclone/"
-    gpg --decrypt --batch --passphrase "$key" "./rclone.conf.gpg" > rclone.conf
-    mv -f "./rclone.conf" "/home/$(logname)/.config/rclone/rclone.conf"
 fi
+key=0
+
 
 # Systemd service
 echo "Do you want to install the systemd service for onedrive? '(y/n)'"

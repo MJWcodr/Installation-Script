@@ -6,12 +6,12 @@ cd ./backup || exit
 	read -r yesno
 	if [ "$yesno" = "y" ]; then
 		apt update
-		apt install restic rclone
+		apt install restic rclone -y
 	fi
 # create password file
-	if [ -f "/srv/lbackups.txt" ]; then
-	echo "lbackups.txt already exists"
-	else
+	if [ -f "/srv/backuppw.txt" ]; then
+	echo "backuppw.txt already exists"
+	else 
 		z=0
 		while [ $z = 0 ];
 			do
@@ -32,21 +32,28 @@ cd ./backup || exit
 			secret=''
 	fi
 # local backup
+
 	echo "setting up local backup at /srv/lbackups"
 	if [ -d /srv/lbackups ]; then
 		echo "/srv/lbackups already exists"
 	else
 		restic init --repo /srv/lbackups --password-file "/srv/backuppw.txt"
 	fi
-	printf "starting backup"
-	cp -f "./backup.txt" "/srv/backup.txt"
-	./backup > /srv/backup.txt
-	./backup-exclude > /srv/backup-exclude.txt
 	
-	restic -r "/srv/lbackups" --exclude-file "/srv/backup-exclude.txt" --password-file "/srv/backuppw.txt" backup --verbose $(cat backup.txt) 
+
+## Copying config files
+	
+	./backup > ./backup.txt
+	./backup-exclude > backup-exclude.txt
+	mv -f "./backup.txt" "/srv/backup.txt"
+	mv -f "./backup-exclude.txt" "/srv/backup-exclude.txt"
+
+## start the backup
+
+	printf "starting backup"
+	restic -r "/srv/lbackups" --exclude-file "/srv/backup-exclude.txt" --password-file "/srv/backuppw.txt" backup --verbose "backup.txt" 
 	
 # remote backup to onedrive
-#	restic -r /srv/lbackups
 
 # cronjob for backing up files
 echo "do you want to regularly backup your files? (y/n)"

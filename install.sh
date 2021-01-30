@@ -1,7 +1,13 @@
 #!/bin/bash
+if [ $(whoami) != root ]; then
+	echo "Please run as root, exiting"
+	exit
+fi
+
+apt update
 
 echo "installation start"
-printf "\n Do you want to run install.sh to install some applications? (y/n)"
+printf "\n Do you want to run installprogs.sh to install some applications? (y/n)"
 read -r yesno
 if [ "$yesno" = "y" ]; then
 ./installprogs.sh
