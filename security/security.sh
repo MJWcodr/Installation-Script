@@ -1,9 +1,8 @@
 cd ./security
 # ufw firwall
-command ufw || apt --qq install ufw
+command ufw || apt -qq install ufw
   apt install ufw
   echo "ufw already installed"
-fi
 
 ufw enable
 
