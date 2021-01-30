@@ -1,1 +1,9 @@
-echo /home/ /etc/ /usr/local/ /usr/ /root/ /var/lib/ /var/mail/ /var/games/ /var/backups/ /var/log/
+echo "/home/
+/etc/
+/usr/local/
+/usr/ /root/
+/var/lib/
+/var/mail/ 
+/var/games/
+/var/backups/
+/var/log/"

@@ -51,7 +51,7 @@ cd ./backup || exit
 ## start the backup
 
 	printf "starting backup"
-	restic -r "/srv/lbackups" --exclude-file "/srv/backup-exclude.txt" --password-file "/srv/backuppw.txt" backup --verbose "backup.txt" 
+	restic -r "/srv/lbackups" --exclude-file "/srv/backup-exclude.txt" --password-file "/srv/backuppw.txt" backup --verbose --files-from "/srv/backup.txt" 
 	
 # remote backup to onedrive
 

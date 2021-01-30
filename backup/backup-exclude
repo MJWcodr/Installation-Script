@@ -1,1 +1,6 @@
-echo /home/$(logname)/Onedrive /home/$(logname)/Downloads
+echo "/home/$(logname)/Onedrive 
+/home/$(logname)/Downloads 
+/home/$(logname)/.local/share/Trash
+/home/$(logname)/.cache/
+/var/lib/snapd/cache
+"
