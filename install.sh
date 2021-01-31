@@ -12,8 +12,6 @@ normal=$(tput sgr0)
 # update all repositories
 apt -qq update
 
-
-
 echo -e "\fDo you want to run installprogs.sh to install some applications? (y/n)"
 read -r yesno
 if [ "$yesno" = "y" ]; then
