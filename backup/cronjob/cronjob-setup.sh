@@ -7,12 +7,15 @@ if [ -f "/etc/cron.hourly/lbackup-hourly.sh" ]; then
 	echo "do you want to update it?"
 	read -r yesno
 	if [ $yesno = "yes" ]; then
-		cp -f ./lbackup-hourly.sh /etc/cron.hourly/lbackup-hourly.sh
-	else	
-		/etc/cron.hourly/lbackup-hourly.sh
+    	./lbackup-hourly.sh > lbackup-hourly
+			chmod -x lbackup-hourly
+		  cp -f ./lbackup-hourly /etc/cron.hourly/lbackup-hourly
+	else
+		echo -e "end of cronjob-setup.sh"
 	fi
 else
-	cp -f ./lbackup-hourly.sh /etc/cron.hourly/lbackup-hourly.sh
+	./lbackup-hourly.sh > lbackup-hourly
+	chmod -x lbackup-hourly
+	cp -f ./lbackup-hourly /etc/cron.hourly/lbackup-hourly
 fi
-	
 cd ..
