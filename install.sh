@@ -10,7 +10,7 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 # update all repositories
-apt -qq update
+apt -q update
 
 echo -e "\fDo you want to run installprogs.sh to install some applications? (y/n)"
 read -r yesno
