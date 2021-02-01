@@ -7,12 +7,18 @@ if [ -f "/etc/cron.hourly/lbackup-hourly" ]; then
 	echo -e "\fdo you want to update it?"
 	read -r yesno
 	if [ $yesno = "yes" ]; then
-		cp -f ./lbackup-hourly  /etc/cron.hourly/lbackup-hourly
+		./lbackup-hourly.sh > lbackup-hourly
+		chmod -x lbackup-hourly
+		mv  -f ./lbackup-hourly  /etc/cron.hourly/lbackup-hourly
 	else
-		/etc/cron.hourly/lbackup-hourly
+		./lbackup-hourly.sh > lbackup-hourly
+		chmod -x lbackup-hourly
+		mv  -f ./lbackup-hourly  /etc/cron.hourly/lbackup-hourly
 	fi
 else
-	cp -f ./lbackup-hourly  /etc/cron.hourly/lbackup-hourly
+	./lbackup-hourly.sh > lbackup-hourly
+	chmod -x lbackup-hourly
+	mv  -f ./lbackup-hourly  /etc/cron.hourly/lbackup-hourly
 fi
 
 cd ..
