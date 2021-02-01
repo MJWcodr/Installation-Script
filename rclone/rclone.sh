@@ -18,7 +18,7 @@ else
 fi
 
 #
-echo "\fDo you know the password of rclone.conf.gpg? (y/n)"
+echo -e "\fDo you know the password of rclone.conf.gpg? (y/n)"
 read -r yesno
 if [ "$yesno" = "y" ]; then
 	echo -e "\fwhat's the passphrase?"

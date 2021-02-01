@@ -18,7 +18,7 @@ cd ./backup || exit
 			echo -e "\fcreate a password for the repository"
 			echo -e "\fWhat should the password be?"
 			read -s -r secret
-			echo "\fEnter the password again"
+			echo -e "\fEnter the password again"
 			read -s -r secret1
 			if [ "$secret1" = "$secret" ]; then
 				z="1"
