@@ -4,5 +4,4 @@ to run the installation process run
 # install
 # rclone setup
 # backup
-the repository will backup the files out of the backup.txt file, which can be customized to the users needs
-
+the repository will backup the files from the backup.txt file, which can be customized to the users needs
